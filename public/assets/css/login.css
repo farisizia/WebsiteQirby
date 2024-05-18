@@ -1,0 +1,25 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #021622;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .page-flex {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+  }
+  /* Menghilangkan warna biru pada login form */
+  .bg-primary {
+    background-color: transparent !important;
+  }
+  /* Mengubah warna tombol Log in now */
+  .btn-primary {
+    background-color: #00A5A7 !important;
+  }
+  /* Mengatur tinggi form */
+  .login-form {
+    height: 400px; /* Sesuaikan dengan kebutuhan */
+  }
