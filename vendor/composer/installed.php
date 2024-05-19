@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '465f313adbeca5d8293d1210f952037cb26abd1e',
+        'reference' => 'dcf38d8851b563a0569c7b7247314ca4f2959275',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -33,6 +33,15 @@
             'replaced' => array(
                 0 => '*',
             ),
+        ),
+        'cornford/googlmapper' => array(
+            'pretty_version' => 'v2.8.2',
+            'version' => '2.8.2.0',
+            'reference' => '6371318ed4a3716dfff8aceda98a00aa65b91378',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../cornford/googlmapper',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'davedevelopment/hamcrest-php' => array(
             'dev_requirement' => true,
@@ -382,7 +391,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '465f313adbeca5d8293d1210f952037cb26abd1e',
+            'reference' => 'dcf38d8851b563a0569c7b7247314ca4f2959275',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -27,7 +27,6 @@ class PropertyAPI extends Controller
     public function store(Request $request)
     {
         $dataProperty = new Property;
-        $dataProperty->images = $request->image;
         $dataProperty->name = $request->name;
         $dataProperty->price = $request->price;
         $dataProperty->status = $request->status;

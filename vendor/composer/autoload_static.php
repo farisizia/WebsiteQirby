@@ -534,10 +534,22 @@ class ComposerStaticInit12d8a4ee32b9430693b0962e9f33b18b
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'C' => 
+        array (
+            'Cornford\\Googlmapper' => 
+            array (
+                0 => __DIR__ . '/..' . '/cornford/googlmapper/src',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\Api\\PropertyAPI' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/PropertyAPI.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\Data_UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Data_UserController.php',
         'App\\Http\\Controllers\\Login_Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Login_Controller.php',
         'App\\Http\\Controllers\\PagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/PagesController.php',
@@ -672,6 +684,26 @@ class ComposerStaticInit12d8a4ee32b9430693b0962e9f33b18b
         'Carbon\\WeekDay' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/WeekDay.php',
         'Carbon\\WrapperClock' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/WrapperClock.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Cornford\\Googlmapper\\Contracts\\MappingBaseInterface' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Contracts/MappingBaseInterface.php',
+        'Cornford\\Googlmapper\\Contracts\\MappingInterface' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Contracts/MappingInterface.php',
+        'Cornford\\Googlmapper\\Contracts\\ModelingInterface' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Contracts/ModelingInterface.php',
+        'Cornford\\Googlmapper\\Contracts\\ObjectableInterface' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Contracts/ObjectableInterface.php',
+        'Cornford\\Googlmapper\\Exceptions\\MapperArgumentException' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Exceptions/MapperArgumentException.php',
+        'Cornford\\Googlmapper\\Exceptions\\MapperException' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Exceptions/MapperException.php',
+        'Cornford\\Googlmapper\\Exceptions\\MapperSearchException' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Exceptions/MapperSearchException.php',
+        'Cornford\\Googlmapper\\Exceptions\\MapperSearchResultException' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Exceptions/MapperSearchResultException.php',
+        'Cornford\\Googlmapper\\Facades\\MapperFacade' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Facades/MapperFacade.php',
+        'Cornford\\Googlmapper\\Mapper' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Mapper.php',
+        'Cornford\\Googlmapper\\MapperBase' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/MapperBase.php',
+        'Cornford\\Googlmapper\\MapperServiceProvider' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/MapperServiceProvider.php',
+        'Cornford\\Googlmapper\\Models\\Circle' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Models/Circle.php',
+        'Cornford\\Googlmapper\\Models\\Location' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Models/Location.php',
+        'Cornford\\Googlmapper\\Models\\Map' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Models/Map.php',
+        'Cornford\\Googlmapper\\Models\\Marker' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Models/Marker.php',
+        'Cornford\\Googlmapper\\Models\\Polygon' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Models/Polygon.php',
+        'Cornford\\Googlmapper\\Models\\Polyline' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Models/Polyline.php',
+        'Cornford\\Googlmapper\\Models\\Rectangle' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Models/Rectangle.php',
+        'Cornford\\Googlmapper\\Models\\Streetview' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Models/Streetview.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',
@@ -6625,6 +6657,7 @@ class ComposerStaticInit12d8a4ee32b9430693b0962e9f33b18b
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit12d8a4ee32b9430693b0962e9f33b18b::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit12d8a4ee32b9430693b0962e9f33b18b::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit12d8a4ee32b9430693b0962e9f33b18b::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit12d8a4ee32b9430693b0962e9f33b18b::$classMap;
 
         }, null, ClassLoader::class);
