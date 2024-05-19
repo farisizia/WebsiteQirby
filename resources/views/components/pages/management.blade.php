@@ -124,6 +124,24 @@
                                                     }
                                                 }
                                             </script>
+                                            {{-- Existing Images Section (Add this) --}}
+                                            <div class="existing-images">
+                                                @foreach ($images as $image)
+                                                    @if ($properties->id == $image->property_id)
+                                                        <div class="existing-image-item">
+                                                            <img src="{{ asset('storage/images_property/' . $image->image) }}"
+                                                                alt="Existing Image" width="100">
+                                                            <button type="button"
+                                                                class="btn btn-danger remove-existing-image"
+                                                                data-image-id="{{ $image->id }}">
+                                                                Remove
+                                                            </button>
+                                                            <input type="hidden" name="existing_images[]"
+                                                                value="{{ $image->id }}">
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
                                             <div class="mb-3">
                                                 <input type="text" class="form-control border border-dark"
                                                     placeholder="Name Property" name="name"
@@ -231,6 +249,26 @@
                     @endforeach
                 </tbody>
             </table>
+
+            <script>
+                document.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('remove-existing-image')) {
+                        if (confirm('Are you sure you want to delete this image?')) {
+                            const imageId = e.target.dataset.imageId;
+                            fetch(`/property/images/${imageId}`, {
+                                    method: 'DELETE'
+                                })
+                                .then(response => {
+                                    if (response.ok) {
+                                        e.target.closest('.existing-image-item').remove();
+                                    } else {
+                                        alert('Error deleting image. Please try again.'); // Menampilkan pesan kesalahan
+                                    }
+                                });
+                        }
+                    }
+                });
+            </script>
         </div>
 
         <!-- Create Property -->
@@ -248,6 +286,7 @@
                         </div>
                     @endif
                     <div class="modal-header">
+
                         <h5 class="modal-title fs-5" id="staticBackdropLabel">Form Property</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
