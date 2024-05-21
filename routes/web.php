@@ -63,7 +63,7 @@ Route::group(['middleware' => ['admin.auth']], function () {
         Route::get('/edit/{id}', [PropertyController::class, 'edit'])->name('property.edit');
         Route::put('/update/{id}', [PropertyController::class, 'update'])->name('property.update');
         Route::delete('/destroy/{id}', [PropertyController::class, 'deleted'])->name('property.deleted');
-        Route::delete('/property/images/{imageId}', [PropertyController::class, 'deleteImage'])->name('property.deleteImage');
+        Route::get('/images/{imageId}', [PropertyController::class, 'deleteImage'])->name('property.deleteImage');
 
     });
 });

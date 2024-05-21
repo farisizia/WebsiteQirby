@@ -11,4 +11,6 @@
     background-color: #FF0000; 
     color: #ffffff; 
   }
-  
+  #map {
+    height: 100%;
+  }

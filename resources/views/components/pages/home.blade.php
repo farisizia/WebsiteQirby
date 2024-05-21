@@ -7,6 +7,29 @@
     <title>@yield('title', 'Dashboard')</title>
     <link rel="stylesheet" href="{{ asset('template/plugins/bootstrap/css/bootstrap.min.css') }}">
     @stack('styles')
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Month', 'Sales'],
+          ['January',   10],
+          ['February',  50],
+          ['March',     30],
+          ['April',     70]
+        ]);
+
+        var options = {
+          hAxis: {title: 'Months',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0}
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
 </head>
 
 <body>
@@ -73,41 +96,14 @@
             <div class="card-header border-0">
                 <h3 class="card-title">
                     <i class="fas fa-th mr-1"></i>
-                    Sales Graph
+                    Grafik Penjualan
                 </h3>
 
             </div>
             <div class="card-body">
-                <canvas class="chart" id="line-chart"
-                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-            </div>
-
-            <div class="card-footer bg-transparent">
-                <div class="row">
-                    <div class="col-4 text-center">
-                        <input type="text" class="knob" value="20" data-width="60" data-height="60"
-                            data-fgColor="#39CCCC" data-inputColor="#FFFFFF">
-                        <div class="text-white">Mail-Orders</div>
-                    </div>
-
-                    <div class="col-4 text-center">
-                        <input type="text" class="knob" value="20" data-width="60" data-height="60"
-                            data-fgColor="#39CCCC" data-inputColor="#FFFFFF">
-                        <div class="text-white">Online</div>
-                    </div>
-
-                    <div class="col-4 text-center">
-                        <input type="text" class="knob" value="20" data-width="60" data-height="60"
-                            data-fgColor="#39CCCC" data-inputColor="#FFFFFF">
-                        <div class="text-white">In-Store</div>
-                    </div>
-
-                </div>
+            <div id="chart_div" style="width: 100%; height: 500px;"></div>
             </div>
         </div>
-
-
-
     </main>
 @endsection
 

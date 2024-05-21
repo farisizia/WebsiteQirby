@@ -96,8 +96,7 @@ class PropertyController extends Controller
     public function deleteImage($imageId)
     {
         $image = Image::findOrFail($imageId);
-        $imageUrl = $request->input('imageUrl');
-        Storage::disk('public')->delete(str_replace(asset('storage'), '', $imageUrl));
+        Storage::disk('public')->delete('images_property/' . $image->image);
         $image->delete();
 
         return redirect()->back()->with('success', 'Image deleted.');
@@ -105,13 +104,19 @@ class PropertyController extends Controller
 
     public function deleted($id)
     {
-        Property::find($id)->delete();
+        $property = Property::findOrFail($id);
 
-        $images=DB::table('images')->where('property_id',$id)->get();
-        foreach ($images as $image) {
-            unlink('storage/images_property/'.$image->image);
-            DB::table('images')->where('id',strval($image->id))->delete();
+        // Ensure images are retrieved as a collection
+        $images = $property->images;
+
+        if ($images->isNotEmpty()) {
+            foreach ($images as $image) {
+                Storage::disk('public')->delete('images_property/' . $image->image);
+                $image->delete();
+            }
         }
+
+        $property->delete();
 
         return redirect()->route('property.view')->with('success', 'Property deleted');
     }

@@ -14,4 +14,8 @@ class Property extends Model
     protected $fillable = ['name','price','status','address',
                             'description','sqft','bath',
                             'garage','floor', 'bed',]; 
-                        }
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
+}
