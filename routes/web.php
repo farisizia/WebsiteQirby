@@ -18,7 +18,8 @@ use App\Http\Controllers\DashboardController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/homebjhgdcts',[DashboardController::class, 'index']) ->name('components.pages.home'); 
+
+Route::get('/homebjhgdcts', [DashboardController::class, 'index'])->name('components.pages.home');
 
 Route::get('/master', function () {
     return view('components.template.master');
@@ -60,11 +61,11 @@ Route::group(['middleware' => ['admin.auth']], function () {
     Route::group(['prefix' => 'property'], function () {
         Route::get('/', [PropertyController::class, 'index'])->name('property.view');
         Route::post('/store', [PropertyController::class, 'store'])->name('property.store');
+        Route::post('/images/{propertyId}', [PropertyController::class, 'storeImage'])->name('property.storeImage');
         Route::get('/edit/{id}', [PropertyController::class, 'edit'])->name('property.edit');
         Route::put('/update/{id}', [PropertyController::class, 'update'])->name('property.update');
         Route::delete('/destroy/{id}', [PropertyController::class, 'deleted'])->name('property.deleted');
         Route::get('/images/{imageId}', [PropertyController::class, 'deleteImage'])->name('property.deleteImage');
-
     });
 });
 

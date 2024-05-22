@@ -56,7 +56,7 @@
                                                 <label for="text" class="form-label"
                                                     style="font-weight:bold">Username</label>
                                                 <input type="text" class="form-control border border-black"
-                                                    name ="username" id="username" value="" required>
+                                                    name="username" id="username" value="" required>
 
                                             </div>
                                         </div>
@@ -65,7 +65,7 @@
                                                 <label for="password" class="form-label"
                                                     style="font-weight:bold">Password</label>
                                                 <input type="password" class="form-control border border-black"
-                                                    name ="password" id="password" value="" required>
+                                                    name="password" id="password" value="" required>
                                             </div>
                                         </div>
                                         <div class="col-12">

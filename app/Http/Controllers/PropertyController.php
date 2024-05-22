@@ -7,21 +7,20 @@ use Illuminate\Support\Str;
 use App\Models\Property;
 use App\Models\Image;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
-;
+use Illuminate\Support\Facades\Storage;;
 class PropertyController extends Controller
 {
     public function index()
     {
 
         $property = Property::all();
-        $images=Image::all();
+        $images = Image::all();
         if (request()->segment(1) == 'api')
             return response()->json([
                 'error' => false,
                 'data' => $property
             ]);
-        return view('components.pages.management', ['property' => $property,'images'=>$images]);
+        return view('components.pages.management', ['property' => $property, 'images' => $images]);
     }
 
 
@@ -43,14 +42,35 @@ class PropertyController extends Controller
         ]);
 
         $new_property = Property::create($data);
-        if($request->has('images')){
+        if ($request->has('images')) {
             foreach ($request->file('images') as $image) {
                 // $image_property = $request->image;
                 $original_image_property = Str::random(10) . $image->getClientOriginalName();
                 $image->storeAs('public/images_property', $original_image_property);
                 Image::create([
-                    'property_id'=>$new_property->id,
-                    'image'=>$original_image_property
+                    'property_id' => $new_property->id,
+                    'image' => $original_image_property
+                ]);
+            }
+        }
+        return redirect()->route('property.view')->with('success', 'Property added');
+    }
+    public function storeImage(Request $request, $propertyId)
+    {
+        $data = $request->except('_token');
+
+        $request->validate([
+            'images' => 'required'
+        ]);
+        // print_r($request['images']);
+        if ($request->has('images')) {
+            foreach ($request->file('images') as $image) {
+                // $image_property = $request->image;
+                $original_image_property = Str::random(10) . $image->getClientOriginalName();
+                $image->storeAs('public/images_property', $original_image_property);
+                Image::create([
+                    'property_id' => $propertyId,
+                    'image' => $original_image_property
                 ]);
             }
         }
@@ -62,7 +82,7 @@ class PropertyController extends Controller
         $data = $request->except('_token');
 
         $request->validate([
-            'image' => 'image|mimes:jpeg, jpg, png',
+            // 'image' => 'image|mimes:jpeg, jpg, png',
             'name' => 'required|string',
             'price' => 'required',
             'status' => 'required',
@@ -77,16 +97,16 @@ class PropertyController extends Controller
 
         $properties = Property::find($id);
 
-        if ($request->hasFile('image')) {
-            foreach ($request->file('image') as $image) {
-                $original_image_property = Str::random(10) . $image->getClientOriginalName();
-                $image->storeAs('public/images_property', $original_image_property);
-                Image::create([
-                    'property_id' => $properties->id,
-                    'image' => $original_image_property
-                ]);
-            }
-        }
+        // if ($request->hasFile('image')) {
+        //     foreach ($request->file('image') as $image) {
+        //         $original_image_property = Str::random(10) . $image->getClientOriginalName();
+        //         $image->storeAs('public/images_property', $original_image_property);
+        //         Image::create([
+        //             'property_id' => $properties->id,
+        //             'image' => $original_image_property
+        //         ]);
+        //     }
+        // }
 
         $properties->update($data);
 
@@ -120,9 +140,4 @@ class PropertyController extends Controller
 
         return redirect()->route('property.view')->with('success', 'Property deleted');
     }
-
-
-
 }
-
-

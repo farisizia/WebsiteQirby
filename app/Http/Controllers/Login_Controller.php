@@ -33,5 +33,4 @@ class Login_Controller extends Controller
 
         // dd($credentials);
     }
-
 }
